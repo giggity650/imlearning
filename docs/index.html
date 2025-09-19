@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Improvised Language Learner</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Improvised Language Learner</h1>
+      <p>
+        This tiny AI begins with complete gibberish and slowly learns how people
+        talk by saving every interaction inside a GitHub repository. Connect it
+        to your repository, let people chat, and watch its vocabulary evolve.
+      </p>
+
+      <section>
+        <h2>Connect your repository</h2>
+        <form id="connect-form">
+          <label for="owner">Repository owner</label>
+          <input id="owner" name="owner" placeholder="octocat" required />
+
+          <label for="repo">Repository name</label>
+          <input id="repo" name="repo" placeholder="imlearning" required />
+
+          <label for="branch">Branch (defaults to <code>main</code>)</label>
+          <input id="branch" name="branch" placeholder="main" />
+
+          <label for="path">Conversation file (defaults to <code>data/conversations.json</code>)</label>
+          <input id="path" name="path" placeholder="data/conversations.json" />
+
+          <label for="token">GitHub personal access token (needed to save)</label>
+          <input
+            id="token"
+            name="token"
+            placeholder="ghp_…"
+            type="password"
+            autocomplete="off"
+          />
+
+          <p>
+            <strong>Security tip:</strong> create a fine-grained personal access
+            token with <em>contents: write</em> scope for this repository. Never
+            share or commit your token.
+          </p>
+
+          <button type="submit">Connect to GitHub</button>
+        </form>
+      </section>
+
+      <section id="chat-section" class="hidden">
+        <h2>Chat with the learner</h2>
+        <ul id="conversation"></ul>
+        <p id="history-summary">0 messages stored</p>
+        <form id="message-form">
+          <label for="message-input">Send a message</label>
+          <input id="message-input" placeholder="Say hello" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+        <p id="status-line">Connect to begin.</p>
+      </section>
+
+      <section>
+        <h2>Offline chat option</h2>
+        <p>
+          Prefer the terminal? Run <code>python chat.py</code> from this
+          repository. Every message is written to the same JSON log, so the web
+          UI and CLI stay in sync.
+        </p>
+      </section>
+
+      <section>
+        <h2>Publishing to GitHub Pages</h2>
+        <ol>
+          <li>Commit these files and push them to your GitHub repository.</li>
+          <li>Enable GitHub Pages and select the <code>docs/</code> folder as the site source.</li>
+          <li>
+            Share the GitHub Pages URL so anyone can open the chat, provide their
+            own token, and help the learner grow.
+          </li>
+        </ol>
+      </section>
+    </main>
+    <script type="module" src="scripts/app.js"></script>
+  </body>
+</html>
